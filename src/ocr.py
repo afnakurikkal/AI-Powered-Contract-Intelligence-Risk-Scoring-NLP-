@@ -26,6 +26,8 @@ def extract_text_from_pdf(pdf_path, poppler_path=None, tesseract_path=None):
     extracted_text = []
 
     for page_number, page in enumerate(pages, start=1):
+        print(f"Processing page {page_number}/{len(pages)}...")
+
         text = pytesseract.image_to_string(page)
 
         extracted_text.append(
@@ -57,6 +59,12 @@ if __name__ == "__main__":
         help="Path to tesseract.exe"
     )
 
+    parser.add_argument(
+        "--output",
+        default="data/processed/sample_contract_ocr.txt",
+        help="Path where OCR text will be saved"
+    )
+
     args = parser.parse_args()
 
     try:
@@ -66,7 +74,16 @@ if __name__ == "__main__":
             tesseract_path=args.tesseract_path
         )
 
-        print(text)
+        output_path = Path(args.output)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+
+        output_path.write_text(
+            text,
+            encoding="utf-8"
+        )
+
+        print("\nOCR completed successfully.")
+        print(f"Output saved to: {output_path}")
 
     except Exception as error:
         print(f"Error: {error}")
