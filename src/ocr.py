@@ -73,6 +73,8 @@ if __name__ == "__main__":
             poppler_path=args.poppler_path,
             tesseract_path=args.tesseract_path
         )
+        print("OCR extraction successful.")
+        print(f"Total characters extracted: {len(text)}")
 
         output_path = Path(args.output)
         output_path.parent.mkdir(parents=True, exist_ok=True)
