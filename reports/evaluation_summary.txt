@@ -1,0 +1,20 @@
+Clause Classification Test Evaluation
+========================================
+
+Test samples: 1512
+
+Original performance:
+Accuracy: 0.8578
+Macro F1: 0.8088
+Weighted F1: 0.8578
+
+Incorrect predictions: 215
+Correct predictions: 1297
+
+Confidence-based improvement:
+Threshold: 0.6
+Low-confidence predictions: 122
+Retained predictions: 1390
+Coverage: 91.93%
+Filtered Accuracy: 0.8986
+Filtered Macro F1: 0.8332
