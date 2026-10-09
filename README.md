@@ -42,3 +42,8 @@ A sophisticated NLP platform designed for legal and compliance teams. This syste
 - Fine-tuned legal-roberta-base on CUAD clauses (42 classes)
 - Test set: 85.78% accuracy, 80.88% Macro F1
 - With 0.60 confidence threshold: 89.86% accuracy, 83.32% Macro F1 (on 91.93% of predictions)
+
+
+## week 3 :Vector Search & API
+-Embeddings :all 13,718 CUAD clauses were converted to 384- number vectors with the 'all-MiniLM-L6-v2' model and stored in a Pinecone index ('contract-clauses') so clauses can be searched by meaning.
+-FastAPI service in 'api/main.py'. Uploaded PDFs are processed in the background.
