@@ -47,3 +47,11 @@ A sophisticated NLP platform designed for legal and compliance teams. This syste
 ## week 3 :Vector Search & API
 -Embeddings :all 13,718 CUAD clauses were converted to 384- number vectors with the 'all-MiniLM-L6-v2' model and stored in a Pinecone index ('contract-clauses') so clauses can be searched by meaning.
 -FastAPI service in 'api/main.py'. Uploaded PDFs are processed in the background.
+
+### Week 4 — Dockerization, API Testing & Documentation 🔄
+
+- Docker setup for the FastAPI application
+- API endpoint testing
+- Application logging
+- Basic performance and load testing
+- Deployment and usage documentation
