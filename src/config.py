@@ -8,7 +8,12 @@ load_dotenv(ROOT / ".env")
 
 UPLOAD_DIR = ROOT / "data" / "raw" / "contracts"
 RESULTS_DIR = ROOT / "data" / "processed" / "results"
-MODEL_DIR = ROOT / "models" / "final_model"        # download from Google Drive (Week 2 model)
+MODEL_DIR = ROOT / "models" / "final_model"  
+
+POPPLER_PATH = os.getenv("POPPLER_PATH") or None
+TESSERACT_PATH = os.getenv("TESSERACT_PATH") or None
+
+      # download from Google Drive (Week 2 model)
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 

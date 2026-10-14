@@ -3,11 +3,15 @@ import json
 from functools import lru_cache
 from pathlib import Path
 
-from config import RESULTS_DIR
+from config import RESULTS_DIR, POPPLER_PATH, TESSERACT_PATH
 from ocr import extract_text_from_pdf
 from clause_segmentation.clause_splitter import split_into_clauses
 from classifier import classify
 from vector_store import upsert_clauses
+
+import config
+print("Pipeline config file:", config.__file__)
+print("Pipeline Pinecone key loaded:", bool(config.PINECONE_API_KEY))
 
 
 @lru_cache(maxsize=1)
@@ -17,7 +21,11 @@ def _nlp():
 
 
 def process_contract(pdf_path, contract_id):
-    text = extract_text_from_pdf(pdf_path)
+    text = extract_text_from_pdf(
+    pdf_path,
+    poppler_path=POPPLER_PATH,
+    tesseract_path=TESSERACT_PATH,
+)
     clauses = split_into_clauses(text)
 
     preds = classify(clauses)
