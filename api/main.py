@@ -4,6 +4,7 @@ import shutil
 import sys
 import uuid
 from pathlib import Path
+from fastapi.middleware.cors import CORSMiddleware
 
 from fastapi import BackgroundTasks, FastAPI, File, HTTPException, UploadFile
 from pydantic import BaseModel
@@ -12,6 +13,13 @@ sys.path.append(str(Path(__file__).resolve().parent.parent / "src"))
 from config import UPLOAD_DIR, RESULTS_DIR, UPLOAD_NAMESPACE, CUAD_NAMESPACE  # noqa: E402
 
 app = FastAPI(title="Contract Intelligence API")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 JOBS = {}   # job_id -> {"status": ..., "filename": ..., "error": ...}  (in memory)
 
 
