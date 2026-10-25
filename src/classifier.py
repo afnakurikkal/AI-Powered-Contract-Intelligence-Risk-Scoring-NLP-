@@ -1,7 +1,16 @@
 """Loads your Week 2 fine-tuned Legal-RoBERTa and classifies clauses."""
+import os
+from huggingface_hub import snapshot_download
+
+
 from functools import lru_cache
 from config import MODEL_DIR, CONFIDENCE_THRESHOLD
-
+if not (MODEL_DIR / "config.json").exists():
+    snapshot_download(
+        repo_id="Afna0022/contract-clause-model",
+        local_dir=str(MODEL_DIR),
+        token=os.getenv("HF_TOKEN"),
+    )
 
 @lru_cache(maxsize=1)
 def _load():

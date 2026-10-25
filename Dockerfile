@@ -20,9 +20,13 @@ RUN python -m spacy download en_core_web_sm
 COPY api/ ./api/
 COPY src/ ./src/
 
+
+
 # Create directories used by the application
-RUN mkdir -p data/raw/contracts data/processed/results models/final_model
+RUN mkdir -p data/raw/contracts data/processed/results models/final_model && chmod -R a+rwX /app
 
-EXPOSE 8000
+ENV HF_HOME=/tmp/hf_cache
 
-CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+EXPOSE 7860
+
+CMD ["uvicorn", "api.main:app", "--host", "0.0.0.0", "--port", "7860"]

@@ -7,6 +7,8 @@ spacy
 # Model (Week 2)
 torch
 transformers
+huggingface_hub
+
 # Vector search (Week 3)
 sentence-transformers
 pinecone
@@ -15,3 +17,4 @@ python-dotenv
 fastapi
 uvicorn[standard]
 python-multipart
+pandas
